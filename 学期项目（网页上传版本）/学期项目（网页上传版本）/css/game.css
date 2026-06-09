@@ -1,0 +1,492 @@
+/* ========== 变量 ========== */
+:root {
+    --clr-primary: #C62828;
+    --clr-primary-dark: #8E0000;
+    --clr-accent: #FF8F00;
+    --clr-accent-light: #FFE082;
+    --clr-bg: #FFF8F0;
+    --clr-surface: #FFFFFF;
+    --clr-text: #2D2017;
+    --clr-text-muted: #7A6B5D;
+    --clr-warm-gray: #F5EDE3;
+    --font-display: 'Noto Serif SC', serif;
+    --font-body: 'Noto Sans SC', sans-serif;
+    --shadow-card: 0 8px 32px rgba(198,40,40,.08);
+    --shadow-hover: 0 16px 48px rgba(198,40,40,.16);
+    --radius-lg: 20px;
+    --radius-md: 14px;
+}
+
+/* ========== 全局 ========== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text);
+    background: var(--clr-bg);
+    overflow-x: hidden;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+body > * { position: relative; z-index: 1; }
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* ========== 导航栏 ========== */
+.navbar {
+    min-height: 60px;
+    margin-bottom: 0;
+    border: none;
+    background: linear-gradient(135deg, var(--clr-primary-dark) 0%, var(--clr-primary) 50%, #D32F2F 100%);
+    box-shadow: 0 4px 24px rgba(142,0,0,.25);
+}
+
+.navbar .navbar-brand {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: .08em;
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+
+.navbar .navbar-brand:hover { color: var(--clr-accent-light) !important; }
+
+.navbar .nav > li > a {
+    color: rgba(255,255,255,.85);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 18px 16px;
+    transition: all .25s ease;
+}
+
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus {
+    color: #fff;
+    background: rgba(255,255,255,.15);
+}
+
+/* ========== 主区域 ========== */
+.game-hero {
+    padding-top: 90px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.game-hero h1 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--clr-text);
+    margin-bottom: 8px;
+}
+
+.game-hero p {
+    color: var(--clr-text-muted);
+    font-size: 16px;
+}
+
+/* ========== 统计条 ========== */
+.stat-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.stat-item { text-align: center; }
+
+.stat-item .stat-value {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.stat-item .stat-label {
+    font-size: 13px;
+    color: var(--clr-text-muted);
+    font-weight: 500;
+}
+
+.stat-correct .stat-value { color: #2E7D32; }
+.stat-wrong   .stat-value { color: var(--clr-primary); }
+.stat-total   .stat-value { color: var(--clr-accent); }
+.stat-streak  .stat-value { color: #6A1B9A; }
+
+/* ========== 游戏卡片 ========== */
+.game-card {
+    background: var(--clr-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    border: 1px solid rgba(0,0,0,.04);
+}
+
+.game-card-header {
+    background: linear-gradient(135deg, var(--clr-primary-dark), var(--clr-primary));
+    padding: 24px 28px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card-header::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: rgba(255,255,255,.06);
+    border-radius: 50%;
+}
+
+.game-card-header .question-num {
+    font-size: 13px;
+    color: rgba(255,255,255,.6);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.game-card-header .question-tip {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    min-height: 32px;
+}
+
+/* 进度条 */
+.progress-track {
+    height: 4px;
+    background: rgba(0,0,0,.06);
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent-light));
+    transition: width .4s ease;
+    border-radius: 0 99px 99px 0;
+}
+
+/* 卡片内容 */
+.game-card-body {
+    padding: 32px 28px;
+}
+
+/* ========== 输入框 ========== */
+.answer-input {
+    border: 2px solid rgba(0,0,0,.1);
+    border-radius: var(--radius-md);
+    padding: 14px 20px;
+    font-size: 18px;
+    font-family: var(--font-body);
+    color: var(--clr-text);
+    background: var(--clr-bg);
+    width: 100%;
+    transition: all .25s ease;
+    outline: none;
+}
+
+.answer-input:focus {
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 4px rgba(198,40,40,.1);
+}
+
+.answer-input::placeholder { color: #bbb; }
+
+/* ========== 按钮组 ========== */
+.btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-game {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .25s ease;
+    letter-spacing: .03em;
+}
+
+.btn-game:active { transform: scale(.97); }
+
+.btn-submit {
+    background: linear-gradient(135deg, #2E7D32, #43A047);
+    color: #fff;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #1B5E20, #2E7D32);
+    box-shadow: 0 4px 16px rgba(46,125,50,.3);
+    color: #fff;
+}
+
+.btn-next {
+    background: linear-gradient(135deg, var(--clr-primary), #D32F2F);
+    color: #fff;
+}
+
+.btn-next:hover {
+    background: linear-gradient(135deg, var(--clr-primary-dark), var(--clr-primary));
+    box-shadow: 0 4px 16px rgba(198,40,40,.3);
+    color: #fff;
+}
+
+.btn-hint {
+    background: linear-gradient(135deg, var(--clr-accent), #FFA000);
+    color: #fff;
+}
+
+.btn-hint:hover {
+    background: linear-gradient(135deg, #E65100, var(--clr-accent));
+    box-shadow: 0 4px 16px rgba(255,143,0,.3);
+    color: #fff;
+}
+
+.btn-restart {
+    background: linear-gradient(135deg, #4527A0, #7B1FA2);
+    color: #fff;
+}
+
+.btn-restart:hover {
+    box-shadow: 0 4px 16px rgba(69,39,160,.3);
+    color: #fff;
+}
+
+/* ========== 反馈区域 ========== */
+.feedback {
+    margin-top: 20px;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-weight: 600;
+    display: none;
+    animation: fadeSlideUp .35s ease both;
+}
+
+.feedback.show { display: block; }
+
+.feedback.correct {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid #C8E6C9;
+}
+
+.feedback.wrong {
+    background: #FFEBEE;
+    color: var(--clr-primary);
+    border: 1px solid #FFCDD2;
+}
+
+.feedback.hint {
+    background: #FFF3E0;
+    color: #E65100;
+    border: 1px solid #FFE0B2;
+}
+
+/* ========== 提示气泡 ========== */
+.hint-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--clr-accent);
+    font-weight: 600;
+    display: none;
+    animation: fadeSlideUp .3s ease both;
+}
+
+.hint-text.show { display: block; }
+
+/* ========== 历史记录 ========== */
+.history-section {
+    max-width: 640px;
+    margin: 0 auto 60px;
+}
+
+.history-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--clr-text);
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 4px solid var(--clr-primary);
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.history-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    background: var(--clr-surface);
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    animation: fadeSlideUp .3s ease both;
+}
+
+.history-list li .h-tip {
+    color: var(--clr-text-muted);
+    flex: 1;
+    margin-right: 12px;
+}
+
+.history-list li .h-answer {
+    font-weight: 700;
+    margin-right: 12px;
+}
+
+.history-list li .h-result {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.history-list li .h-result.pass { color: #2E7D32; }
+.history-list li .h-result.fail { color: var(--clr-primary); }
+
+/* ========== 完成弹窗 ========== */
+.finish-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn .3s ease both;
+}
+
+.finish-overlay.show { display: flex; }
+
+.finish-box {
+    background: var(--clr-surface);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 24px 64px rgba(0,0,0,.3);
+    animation: scaleUp .35s ease both;
+}
+
+.finish-box .finish-emoji { font-size: 56px; margin-bottom: 12px; }
+
+.finish-box h2 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.finish-box .finish-score {
+    font-size: 48px;
+    font-weight: 900;
+    font-family: var(--font-display);
+    color: var(--clr-primary);
+    margin: 12px 0;
+}
+
+.finish-box .finish-msg {
+    font-size: 15px;
+    color: var(--clr-text-muted);
+    margin-bottom: 24px;
+}
+
+.finish-box .btn-game { min-width: 160px; }
+
+/* ========== 页脚 ========== */
+footer {
+    background: linear-gradient(135deg, #1a0505 0%, #2d0a0a 100%);
+    padding: 28px 0;
+    margin-top: auto;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent), var(--clr-primary));
+}
+
+footer p {
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    margin: 0;
+    text-align: center;
+}
+
+/* ========== 动画 ========== */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { opacity: 0; transform: scale(.85); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.shake { animation: shake .4s ease; }
+
+/* ========== 响应式 ========== */
+@media (max-width: 575px) {
+    .game-hero h1 { font-size: 26px; }
+    .stat-bar { gap: 16px; }
+    .stat-item .stat-value { font-size: 24px; }
+    .game-card-header .question-tip { font-size: 18px; }
+    .game-card-body { padding: 24px 20px; }
+    .btn-row { flex-direction: column; }
+    .btn-game { min-width: auto; }
+}

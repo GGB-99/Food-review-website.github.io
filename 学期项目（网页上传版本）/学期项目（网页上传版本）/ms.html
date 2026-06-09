@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美食猜猜乐 - 美味百科</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">美味百科</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="index.html">返回首页</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- 顶部 -->
+    <div class="game-hero">
+        <div class="container">
+            <h1>美食猜猜乐</h1>
+            <p>根据提示猜出美食名称，看看你能答对多少题！</p>
+        </div>
+    </div>
+
+    <!-- 统计条 -->
+    <div class="container">
+        <div class="stat-bar">
+            <div class="stat-item stat-correct">
+                <div class="stat-value" id="statCorrect">0</div>
+                <div class="stat-label">答对</div>
+            </div>
+            <div class="stat-item stat-wrong">
+                <div class="stat-value" id="statWrong">0</div>
+                <div class="stat-label">答错</div>
+            </div>
+            <div class="stat-item stat-total">
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-label">已答</div>
+            </div>
+            <div class="stat-item stat-streak">
+                <div class="stat-value" id="statStreak">0</div>
+                <div class="stat-label">连对</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏卡片 -->
+    <div class="container">
+        <div class="game-card">
+            <div class="game-card-header">
+                <div class="question-num" id="questionNum">第 1 题 / 共 100 题</div>
+                <p class="question-tip" id="tip">提示：正在加载...</p>
+            </div>
+            <div class="progress-track">
+                <div class="progress-bar-inner" id="progressBar" style="width:0%"></div>
+            </div>
+            <div class="game-card-body">
+                <input type="text" class="answer-input" id="answerInput"
+                       placeholder="输入美食名称" autocomplete="off">
+                <div class="btn-row">
+                    <button class="btn-game btn-submit" id="btnSubmit">提交答案</button>
+                    <button class="btn-game btn-hint" id="btnHint">提示一下</button>
+                    <button class="btn-game btn-next" id="btnNext">下一题</button>
+                </div>
+                <div class="feedback" id="feedback"></div>
+                <div class="hint-text" id="hintText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 答题历史 -->
+    <div class="container">
+        <div class="history-section">
+            <h3 class="history-title">答题记录</h3>
+            <ul class="history-list" id="historyList">
+                <li style="justify-content:center;color:#bbb;">暂无记录，开始答题吧</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<!-- 完成弹窗 -->
+<div class="finish-overlay" id="finishOverlay">
+    <div class="finish-box">
+        <div class="finish-emoji" id="finishEmoji">🎉</div>
+        <h2 id="finishTitle">全部答完啦！</h2>
+        <div class="finish-score" id="finishScore">0 / 0</div>
+        <p class="finish-msg" id="finishMsg">正确率 0%</p>
+        <button class="btn-game btn-restart" id="btnRestart">重新开始</button>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+    <div class="container">
+        <p>美味百科 &copy; IVT &middot; 二组网页 &middot; 刘佳喻 周华</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    /* ========== 题库 ========== */
+    var foodList = [
+        ['四川名菜，麻辣鲜香','麻婆豆腐'],
+        ['京城招牌，皮脆肉嫩','北京烤鸭'],
+        ['鲁菜经典，酸甜口味','糖醋鲤鱼'],
+        ['广东特色，蜜汁烤肉','广式叉烧'],
+        ['陕西小吃，馍夹卤肉','肉夹馍'],
+        ['春节必备，面皮裹馅','饺子'],
+        ['江浙名点，小笼汤汁','小笼包'],
+        ['湘菜代表，辣味十足','剁椒鱼头'],
+        ['上海经典，浓油赤酱','红烧肉'],
+        ['云南特色，米线搭配','过桥米线'],
+        ['新疆美食，串烤羊肉','烤羊肉串'],
+        ['台湾小吃，外酥内软','盐酥鸡'],
+        ['厦门名点，海鲜馅料','海蛎煎'],
+        ['广西特色，米粉酸辣','螺蛳粉'],
+        ['武汉早点，热干浓香','热干面'],
+        ['杭州名菜，醋鱼鲜嫩','西湖醋鱼'],
+        ['四川火锅必点，毛茸茸','毛肚'],
+        ['东北名菜，酸菜搭配','酸菜白肉'],
+        ['天津早点，煎饼裹脆','煎饼果子'],
+        ['长沙小吃，外焦里嫩','臭豆腐'],
+        ['兰州代表，一清二白','兰州拉面'],
+        ['苏州名点，蟹黄鲜美','蟹黄汤包'],
+        ['贵州特色，酸辣开胃','酸汤鱼'],
+        ['广东早茶，虾仁馅皮','虾饺'],
+        ['延边美食，冷汤荞面','冷面'],
+        ['上海早点，糯米包油','粢饭团'],
+        ['河南名吃，烩面宽汤','烩面'],
+        ['广东靓汤，老火慢炖','老火靓汤'],
+        ['徽菜经典，臭鳜发酵','臭鳜鱼'],
+        ['山西特色，刀削而成','刀削面'],
+        ['东北名菜，锅包酸甜','锅包肉'],
+        ['江苏名菜，软兜长鱼','软兜长鱼'],
+        ['成都小吃，麻辣串串','串串香'],
+        ['客家美食，酿豆腐馅','酿豆腐'],
+        ['无锡名点，排骨甜酱','无锡排骨'],
+        ['新疆特色，手抓大米','手抓饭'],
+        ['四川名菜，回锅翻炒','回锅肉'],
+        ['海南名菜，白切鸡嫩','文昌鸡'],
+        ['广东甜品，双皮奶滑','双皮奶'],
+        ['福建名汤，佛跳墙鲜','佛跳墙'],
+        ['江南小吃，桂花糖藕','桂花糖藕'],
+        ['云南烧烤，菌菇拼盘','烤菌子'],
+        ['潮汕特色，牛肉丸弹','牛肉丸'],
+        ['山东名吃，煎饼卷葱','煎饼卷大葱'],
+        ['四川小吃，担担面香','担担面'],
+        ['澳门名点，蛋挞酥脆','葡式蛋挞'],
+        ['广东名菜，白灼虾鲜','白灼虾'],
+        ['云南名菜，汽锅蒸鸡','汽锅鸡'],
+        ['东北美食，烧烤撸串','东北烧烤'],
+        ['贵州小吃，辣子鸡香','辣子鸡'],
+        ['西藏特色，酥油茶浓','酥油茶'],
+        ['广东甜品，杨枝甘露','杨枝甘露'],
+        ['湖南米粉，圆粉鲜辣','常德米粉'],
+        ['贵州早餐，牛肉粉汤','花溪牛肉粉'],
+        ['闽南名点，沙茶面浓','沙茶面'],
+        ['河北名吃，驴肉火烧','驴肉火烧'],
+        ['内蒙古特色，手扒羊肉','手扒肉'],
+        ['广西名菜，啤酒鱼香','啤酒鱼'],
+        ['天津名吃，狗不理包','狗不理包子'],
+        ['无锡名点，小笼酱排','酱排骨'],
+        ['东北名菜，地三鲜香','地三鲜'],
+        ['四川名菜，水煮鱼辣','水煮鱼'],
+        ['广东煲仔，腊味饭焦','煲仔饭'],
+        ['上海名点，生煎包底','生煎包'],
+        ['西安美食，泡馍掰碎','羊肉泡馍'],
+        ['湖北名菜，莲藕排骨','排骨藕汤'],
+        ['江西特色，米粉蒸肉','粉蒸肉'],
+        ['江苏名菜，大煮干丝','大煮干丝'],
+        ['广西早餐，老友粉酸','老友粉'],
+        ['湖南名菜，小炒黄牛','小炒黄牛肉'],
+        ['四川名菜，水煮牛肉','水煮牛肉'],
+        ['浙江名菜，东坡肘子','东坡肉'],
+        ['广东名菜，烧鹅皮脆','烧鹅'],
+        ['河南名吃，胡辣汤浓','胡辣汤'],
+        ['山东名菜，糖醋里脊','糖醋里脊'],
+        ['福建名菜，荔枝肉甜','荔枝肉'],
+        ['潮汕名菜，卤鹅入味','卤鹅'],
+        ['台湾名点，凤梨酥甜','凤梨酥'],
+        ['西藏特色，糌粑青稞','糌粑'],
+        ['东北名菜，小鸡蘑菇','小鸡炖蘑菇'],
+        ['广东早茶，肠粉滑嫩','肠粉'],
+        ['云南小吃，鲜花饼香','鲜花饼'],
+        ['湖北名吃，豆皮三鲜','三鲜豆皮'],
+        ['东北名菜，铁锅炖鱼','铁锅炖'],
+        ['北京小吃，炸酱面浓','炸酱面'],
+        ['四川名菜，宫保鸡丁','宫保鸡丁'],
+        ['广东名菜，脆皮烧肉','脆皮烧肉'],
+        ['贵州名菜，折耳根炒','折耳根'],
+        ['上海名菜，腌笃鲜汤','腌笃鲜'],
+        ['山东名菜，九转大肠','九转大肠'],
+        ['苏州名面，爆鱼浇头','苏式汤面'],
+        ['广东甜品，姜撞奶辣','姜撞奶'],
+        ['湖南名菜，外婆菜香','外婆菜'],
+        ['四川名菜，夫妻肺片','夫妻肺片'],
+        ['广西美食，桂林米粉','桂林米粉'],
+        ['新疆特色，馕饼香脆','馕'],
+        ['西藏特色，青稞酒酿','青稞酒'],
+        ['北京小吃，糖葫芦甜','冰糖葫芦'],
+        ['东北名菜，溜肉段香','溜肉段'],
+        ['四川名菜，鱼香肉丝','鱼香肉丝'],
+        ['广东甜品，龟苓膏苦','龟苓膏']
+    ];
+
+    /* ========== DOM ========== */
+    var $tip        = document.getElementById('tip');
+    var $num        = document.getElementById('questionNum');
+    var $input      = document.getElementById('answerInput');
+    var $feedback   = document.getElementById('feedback');
+    var $hintText   = document.getElementById('hintText');
+    var $progress   = document.getElementById('progressBar');
+    var $history    = document.getElementById('historyList');
+    var $sCorrect   = document.getElementById('statCorrect');
+    var $sWrong     = document.getElementById('statWrong');
+    var $sTotal     = document.getElementById('statTotal');
+    var $sStreak    = document.getElementById('statStreak');
+    var $overlay    = document.getElementById('finishOverlay');
+    var $btnSubmit  = document.getElementById('btnSubmit');
+    var $btnHint    = document.getElementById('btnHint');
+    var $btnNext    = document.getElementById('btnNext');
+    var $btnRestart = document.getElementById('btnRestart');
+
+    /* ========== 状态 ========== */
+    var queue       = [];
+    var current     = 0;
+    var correct     = 0;
+    var wrong       = 0;
+    var streak      = 0;
+    var maxStreak   = 0;
+    var answered    = 0;
+    var hintUsed    = false;
+    var isLocked    = false;
+    var historyData = [];
+
+    /* ========== 工具 ========== */
+    function shuffle(arr) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+        return a;
+    }
+
+    /* ========== 初始化 ========== */
+    function initGame() {
+        queue = shuffle(foodList);
+        current = 0;
+        correct = 0;
+        wrong = 0;
+        streak = 0;
+        maxStreak = 0;
+        answered = 0;
+        hintUsed = false;
+        isLocked = false;
+        historyData = [];
+        $history.innerHTML = '<li style="justify-content:center;color:#bbb;">暂无记录，开始答题吧</li>';
+        $overlay.classList.remove('show');
+        updateStats();
+        loadQuestion();
+    }
+
+    /* ========== 加载题目 ========== */
+    function loadQuestion() {
+        if (current >= queue.length) {
+            showFinish();
+            return;
+        }
+        var q = queue[current];
+        $tip.textContent = '提示：' + q[0];
+        $num.textContent = '第 ' + (current + 1) + ' 题 / 共 ' + queue.length + ' 题';
+        $progress.style.width = ((current / queue.length) * 100) + '%';
+        $input.value = '';
+        $input.className = 'answer-input';
+        $feedback.className = 'feedback';
+        $feedback.textContent = '';
+        $hintText.className = 'hint-text';
+        $hintText.textContent = '';
+        hintUsed = false;
+        isLocked = false;
+        $input.focus();
+    }
+
+    /* ========== 提交答案 ========== */
+    function submitAnswer() {
+        if (isLocked) return;
+        var val = $input.value.trim();
+        if (!val) {
+            $input.classList.add('shake');
+            $input.placeholder = '请输入答案再提交';
+            setTimeout(function () {
+                $input.classList.remove('shake');
+                $input.placeholder = '输入美食名称';
+            }, 500);
+            $input.focus();
+            return;
+        }
+
+        var ans = queue[current][1];
+        answered++;
+
+        if (val === ans) {
+            correct++;
+            streak++;
+            if (streak > maxStreak) maxStreak = streak;
+            showFeedback(true, '回答正确！');
+            addHistory(current, true);
+            isLocked = true;
+            setTimeout(nextQuestion, 900);
+        } else {
+            wrong++;
+            streak = 0;
+            showFeedback(false, '答案不对，正确答案是「' + ans + '」');
+            addHistory(current, false);
+            isLocked = true;
+            setTimeout(nextQuestion, 1800);
+        }
+
+        updateStats();
+    }
+
+    /* ========== 下一题 ========== */
+    function nextQuestion() {
+        current++;
+        loadQuestion();
+    }
+
+    /* ========== 提示 ========== */
+    function showHint() {
+        if (hintUsed || isLocked) return;
+        var ans = queue[current][1];
+        hintUsed = true;
+        var hint = '答案共 ' + ans.length + ' 个字：';
+        hint += ans.charAt(0);
+        for (var i = 1; i < ans.length; i++) hint += ' _';
+        $hintText.textContent = hint;
+        $hintText.className = 'hint-text show';
+    }
+
+    /* ========== 反馈 ========== */
+    function showFeedback(isCorrect, msg) {
+        $feedback.textContent = (isCorrect ? '✅ ' : '❌ ') + msg;
+        $feedback.className = 'feedback show ' + (isCorrect ? 'correct' : 'wrong');
+        if (!isCorrect) {
+            $input.classList.add('shake');
+            setTimeout(function () { $input.classList.remove('shake'); }, 400);
+        }
+    }
+
+    /* ========== 统计 ========== */
+    function updateStats() {
+        $sCorrect.textContent = correct;
+        $sWrong.textContent   = wrong;
+        $sTotal.textContent   = answered;
+        $sStreak.textContent  = streak;
+    }
+
+    /* ========== 历史记录 ========== */
+    function addHistory(idx, isCorrect) {
+        historyData.unshift({
+            tip: queue[idx][0],
+            answer: queue[idx][1],
+            pass: isCorrect
+        });
+        renderHistory();
+    }
+
+    function renderHistory() {
+        var html = '';
+        var show = historyData.slice(0, 20);
+        for (var i = 0; i < show.length; i++) {
+            var h = show[i];
+            html += '<li>'
+                + '<span class="h-tip">' + h.tip + '</span>'
+                + '<span class="h-answer">' + h.answer + '</span>'
+                + '<span class="h-result ' + (h.pass ? 'pass' : 'fail') + '">'
+                + (h.pass ? '✓' : '✗') + '</span>'
+                + '</li>';
+        }
+        $history.innerHTML = html;
+    }
+
+    /* ========== 结算 ========== */
+    function showFinish() {
+        $progress.style.width = '100%';
+        var rate = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+        var emoji, title, msg;
+
+        if (rate >= 90)      { emoji = '🏆'; title = '美食大师！';    msg = '你是真正的吃货达人！'; }
+        else if (rate >= 70) { emoji = '🎉'; title = '非常棒！';      msg = '你的美食知识很丰富！'; }
+        else if (rate >= 50) { emoji = '👍'; title = '还不错！';      msg = '继续加油，美食之路任重道远。'; }
+        else                 { emoji = '💪'; title = '再接再厉！';    msg = '多了解美食文化，下次一定更好！'; }
+
+        document.getElementById('finishEmoji').textContent  = emoji;
+        document.getElementById('finishTitle').textContent   = title;
+        document.getElementById('finishScore').textContent   = correct + ' / ' + answered;
+        document.getElementById('finishMsg').textContent     = '正确率 ' + rate + '%  |  最佳连对 ' + maxStreak + ' 题';
+        $overlay.classList.add('show');
+    }
+
+    /* ========== 事件绑定 ========== */
+    $btnSubmit.addEventListener('click', submitAnswer);
+    $btnNext.addEventListener('click', function () { if (!isLocked) nextQuestion(); });
+    $btnHint.addEventListener('click', showHint);
+    $btnRestart.addEventListener('click', initGame);
+
+    $input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            submitAnswer();
+        }
+    });
+
+    /* ========== 启动 ========== */
+    initGame();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,692 @@
+/* ==================== CSS 变量 ==================== */
+:root {
+    --clr-primary: #C62828;
+    --clr-primary-dark: #8E0000;
+    --clr-accent: #FF8F00;
+    --clr-accent-light: #FFE082;
+    --clr-bg: #FFF8F0;
+    --clr-surface: #FFFFFF;
+    --clr-text: #2D2017;
+    --clr-text-muted: #7A6B5D;
+    --clr-warm-gray: #F5EDE3;
+    --font-display: 'Noto Serif SC', serif;
+    --font-body: 'Noto Sans SC', sans-serif;
+    --shadow-card: 0 8px 32px rgba(198,40,40,.08);
+    --shadow-hover: 0 16px 48px rgba(198,40,40,.16);
+    --radius-lg: 20px;
+    --radius-md: 14px;
+}
+
+/* ==================== 全局重置 ==================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text);
+    background: var(--clr-bg);
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+body > * { position: relative; z-index: 1; }
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--clr-text);
+    margin-top: 0;
+}
+
+img { max-width: 100%; height: auto; }
+
+/* ==================== 滚动条 ==================== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--clr-warm-gray); }
+::-webkit-scrollbar-thumb { background: var(--clr-primary); border-radius: 99px; }
+
+/* ==================== 导航栏 ==================== */
+.navbar {
+    min-height: 60px;
+    margin-bottom: 0;
+    border: none;
+    background: linear-gradient(135deg, var(--clr-primary-dark) 0%, var(--clr-primary) 50%, #D32F2F 100%);
+    box-shadow: 0 4px 24px rgba(142,0,0,.25);
+    transition: all .3s ease;
+}
+
+.navbar.scrolled { box-shadow: 0 2px 16px rgba(142,0,0,.35); }
+
+.navbar .navbar-brand {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: .08em;
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.2);
+    height: 60px;
+    line-height: 28px;
+    padding: 16px 15px;
+}
+
+.navbar .navbar-brand:hover { color: var(--clr-accent-light) !important; }
+
+.navbar .navbar-toggle {
+    border-color: rgba(255,255,255,.3);
+    margin-top: 13px;
+}
+
+.navbar .navbar-toggle .icon-bar { background-color: #fff; }
+
+.navbar .navbar-toggle:focus,
+.navbar .navbar-toggle:hover { background-color: rgba(255,255,255,.15); }
+
+.navbar .nav > li > a {
+    color: rgba(255,255,255,.85);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 20px 16px;
+    transition: all .25s ease;
+    position: relative;
+}
+
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus,
+.navbar .nav > li.active > a,
+.navbar .nav > li.active > a:hover,
+.navbar .nav > li.active > a:focus {
+    color: #fff;
+    background: rgba(255,255,255,.15);
+}
+
+.navbar .nav > li.active > a::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: var(--clr-accent-light);
+    border-radius: 99px;
+}
+
+@media (max-width: 767px) {
+    .navbar .nav > li > a { padding: 12px 20px; }
+    .navbar .nav > li.active > a::after { bottom: 6px; left: 20px; transform: none; }
+    .navbar-collapse { background: rgba(0,0,0,.15); }
+}
+
+/* ==================== Banner ==================== */
+.banner-section { padding-top: 80px; }
+
+#foodBanner {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,.15);
+}
+
+#foodBanner .carousel-inner > .item > img {
+    height: 480px; width: 100%; object-fit: cover;
+    filter: brightness(.7); transition: transform .6s ease;
+}
+
+#foodBanner:hover .carousel-inner > .item.active > img { transform: scale(1.04); }
+
+#foodBanner .carousel-caption { bottom: 25%; }
+
+#foodBanner .carousel-caption h3 {
+    font-family: var(--font-display); font-size: 36px; font-weight: 900;
+    text-shadow: 0 4px 24px rgba(0,0,0,.5); color: #fff;
+}
+
+#foodBanner .carousel-caption p {
+    font-size: 18px; text-shadow: 0 2px 12px rgba(0,0,0,.4); color: rgba(255,255,255,.9);
+}
+
+#foodBanner .carousel-control {
+    width: 8%; background-image: none !important; opacity: .5; transition: opacity .3s ease;
+}
+
+#foodBanner .carousel-control:hover { opacity: 1; }
+
+#foodBanner .carousel-indicators li {
+    width: 30px; height: 4px; border-radius: 99px; border: none;
+    background-color: rgba(255,255,255,.5); margin: 0 4px;
+}
+
+#foodBanner .carousel-indicators .active { width: 40px; height: 4px; background-color: #fff; }
+
+@media (max-width: 991px) {
+    #foodBanner .carousel-inner > .item > img { height: 360px; }
+    #foodBanner .carousel-caption h3 { font-size: 26px; }
+}
+
+@media (max-width: 767px) {
+    #foodBanner .carousel-inner > .item > img { height: 260px; }
+    #foodBanner .carousel-caption h3 { font-size: 20px; }
+    #foodBanner .carousel-caption p { font-size: 14px; }
+}
+
+@media (max-width: 575px) {
+    .banner-section { padding-top: 66px; }
+    #foodBanner .carousel-inner > .item > img { height: 200px; }
+    #foodBanner .carousel-caption h3 { font-size: 16px; }
+}
+
+/* ==================== 通用标题 ==================== */
+.section-header { text-align: center; margin-bottom: 40px; }
+
+.section-title {
+    font-family: var(--font-display); font-size: 30px; font-weight: 900;
+    color: var(--clr-text); position: relative; display: inline-block;
+    padding-bottom: 14px; margin-bottom: 8px;
+}
+
+.section-title::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; margin-left: -30px;
+    width: 60px; height: 4px;
+    background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent));
+    border-radius: 99px;
+}
+
+.section-subtitle { color: var(--clr-text-muted); font-size: 15px; margin-top: 4px; }
+
+/* ==================== 热门美食 ==================== */
+.food-card {
+    border: none; border-radius: var(--radius-md); overflow: hidden;
+    box-shadow: var(--shadow-card); transition: all .35s cubic-bezier(.4,0,.2,1);
+    background: var(--clr-surface); margin-bottom: 30px; cursor: pointer;
+    opacity: 0; animation: fadeUp .6s ease forwards;
+}
+
+.food-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+
+.food-card .food-card-img {
+    height: 200px; width: 100%; object-fit: cover; transition: transform .4s ease;
+}
+
+.food-card:hover .food-card-img { transform: scale(1.08); }
+
+.food-card .food-card-body { padding: 18px; }
+
+.food-card .food-card-title {
+    font-family: var(--font-display); font-size: 18px; font-weight: 700;
+    color: var(--clr-primary-dark); margin: 0 0 8px;
+}
+
+.food-card .food-card-text { font-size: 13px; color: var(--clr-text-muted); line-height: 1.6; margin: 0; }
+
+.food-card:nth-child(1) { animation-delay: 0s; }
+.food-card:nth-child(2) { animation-delay: .1s; }
+.food-card:nth-child(3) { animation-delay: .2s; }
+.food-card:nth-child(4) { animation-delay: .3s; }
+
+/* ==================== 八大菜系 ==================== */
+.cuisine-card {
+    border-radius: var(--radius-md); padding: 16px; text-align: center;
+    transition: all .3s ease; border: 1px solid rgba(0,0,0,.06);
+    background: var(--clr-surface); margin-bottom: 24px;
+    position: relative; overflow: hidden;
+}
+
+.cuisine-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+
+.cuisine-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-hover); }
+
+.cuisine-card img {
+    width: 100%; height: 180px; object-fit: cover; border-radius: 10px;
+    margin-bottom: 10px; transition: transform .3s ease;
+}
+
+.cuisine-card:hover img { transform: scale(1.05); }
+
+.cuisine-card .cuisine-name { font-family: var(--font-display); font-weight: 700; font-size: 17px; margin-bottom: 4px; }
+.cuisine-card .cuisine-desc { font-size: 13px; color: var(--clr-text-muted); margin: 0; }
+
+.cuisine-sichuan::before   { background: #D32F2F; }
+.cuisine-guangdong::before { background: #2E7D32; }
+.cuisine-shandong::before  { background: #E65100; }
+.cuisine-jiangsu::before   { background: #1565C0; }
+.cuisine-zhejiang::before  { background: #00838F; }
+.cuisine-fujian::before    { background: #6A1B9A; }
+.cuisine-hunan::before     { background: #BF360C; }
+.cuisine-anhui::before     { background: #4E342E; }
+
+/* ==================== 特色小吃 ==================== */
+.snack-section {
+    background: linear-gradient(180deg, var(--clr-warm-gray) 0%, var(--clr-bg) 100%);
+}
+
+.snack-card {
+    background: var(--clr-surface); border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-card); transition: all .35s ease; margin-bottom: 30px;
+}
+
+.snack-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+
+.snack-card .snack-img-wrap { overflow: hidden; max-height: 240px; }
+
+.snack-card .snack-img-wrap img {
+    width: 100%; height: 240px; object-fit: cover; transition: transform .5s ease;
+}
+
+.snack-card:hover .snack-img-wrap img { transform: scale(1.08); }
+
+.snack-card .snack-body { padding: 20px; }
+
+.snack-card h5 {
+    font-family: var(--font-display); font-size: 19px; font-weight: 700;
+    color: var(--clr-primary-dark); margin: 0 0 8px;
+}
+
+.snack-card p { font-size: 14px; color: var(--clr-text-muted); margin: 0; }
+
+/* ==================== 异国美食 ==================== */
+.abroad-section {
+    background: var(--clr-bg);
+}
+
+/* 区域标签导航 */
+.abroad-tabs {
+    border-bottom: 2px solid rgba(0,0,0,.08);
+    margin-bottom: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+}
+
+.abroad-tabs > li {
+    float: none;
+}
+
+.abroad-tabs > li > a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--clr-text-muted);
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    padding: 12px 20px;
+    transition: all .25s ease;
+    cursor: pointer;
+}
+
+.abroad-tabs > li > a:hover {
+    color: var(--clr-primary);
+    background: transparent;
+    border-bottom-color: rgba(198,40,40,.2);
+}
+
+.abroad-tabs > li.active > a,
+.abroad-tabs > li.active > a:hover,
+.abroad-tabs > li.active > a:focus {
+    color: var(--clr-primary);
+    background: transparent;
+    border-bottom-color: var(--clr-primary);
+}
+
+/* 异国美食卡片 */
+.world-card {
+    background: var(--clr-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all .3s ease;
+    margin-bottom: 24px;
+    cursor: default;
+}
+
+.world-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.world-card .world-img-wrap {
+    overflow: hidden;
+    height: 160px;
+}
+
+.world-card .world-img-wrap img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+
+.world-card:hover .world-img-wrap img {
+    transform: scale(1.06);
+}
+
+.world-card .world-body {
+    padding: 14px 16px 16px;
+}
+
+.world-card .world-body h5 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--clr-primary-dark);
+    margin: 0 0 4px;
+}
+
+.world-card .world-body .world-origin {
+    font-size: 12px;
+    color: var(--clr-accent);
+    font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: .03em;
+}
+
+.world-card .world-body p {
+    font-size: 13px;
+    color: var(--clr-text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 动画入场 */
+.world-card {
+    opacity: 0;
+    animation: fadeUp .5s ease forwards;
+}
+
+.world-card:nth-child(1)  { animation-delay: 0s; }
+.world-card:nth-child(2)  { animation-delay: .05s; }
+.world-card:nth-child(3)  { animation-delay: .1s; }
+.world-card:nth-child(4)  { animation-delay: .15s; }
+.world-card:nth-child(5)  { animation-delay: .2s; }
+.world-card:nth-child(6)  { animation-delay: .25s; }
+
+@media (max-width: 991px) {
+    .abroad-tabs > li > a { padding: 10px 14px; font-size: 13px; }
+}
+
+@media (max-width: 767px) {
+    .abroad-tabs > li > a { padding: 8px 10px; font-size: 12px; }
+}
+
+/* ==================== 小游戏 ==================== */
+.game-section {
+    background: linear-gradient(135deg, #1a0505 0%, #2d0a0a 40%, #1a1a2e 100%);
+    position: relative; overflow: hidden; padding: 60px 0;
+}
+
+.game-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(198,40,40,.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(255,143,0,.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.game-section .section-title { color: #fff; }
+
+.game-section .section-title::after {
+    background: linear-gradient(90deg, var(--clr-accent), #FFD54F);
+}
+
+.game-section .section-subtitle { color: rgba(255,255,255,.6); }
+
+.game-link { text-decoration: none !important; display: block; max-width: 720px; margin: 0 auto; }
+
+.game-inner {
+    display: table; width: 100%;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: var(--radius-lg); padding: 24px;
+    transition: all .35s ease;
+}
+
+.game-link:hover .game-inner {
+    background: rgba(255,255,255,.1); border-color: var(--clr-accent);
+    transform: translateY(-4px); box-shadow: 0 16px 48px rgba(255,143,0,.15);
+}
+
+.game-thumb-wrap { display: table-cell; vertical-align: middle; width: 180px; padding-right: 24px; }
+
+.game-thumb { width: 160px; height: 160px; object-fit: cover; border-radius: var(--radius-md); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+
+.game-info-wrap { display: table-cell; vertical-align: middle; }
+
+.game-info-wrap h3 { color: #fff; font-size: 22px; margin: 0 0 8px; }
+
+.game-info-wrap p { color: rgba(255,255,255,.7); font-size: 15px; margin: 0 0 16px; }
+
+.game-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--clr-accent), #FF6F00);
+    color: #fff; font-weight: 700; font-size: 15px;
+    padding: 10px 28px; border-radius: 99px;
+    transition: all .25s ease; letter-spacing: .03em;
+}
+
+.game-link:hover .game-btn {
+    background: linear-gradient(135deg, #FFD54F, var(--clr-accent));
+    letter-spacing: .08em; box-shadow: 0 4px 20px rgba(255,143,0,.4);
+}
+
+@media (max-width: 767px) {
+    .game-thumb-wrap { display: block; width: auto; text-align: center; padding-right: 0; padding-bottom: 16px; }
+    .game-thumb { width: 120px; height: 120px; }
+    .game-info-wrap { display: block; text-align: center; }
+}
+
+/* ==================== 美食科普 ==================== */
+.science-section {
+    background: linear-gradient(180deg, var(--clr-warm-gray) 0%, var(--clr-bg) 100%);
+}
+
+.science-box {
+    background: var(--clr-surface); border-radius: var(--radius-lg); padding: 36px;
+    box-shadow: var(--shadow-card); border-left: 5px solid var(--clr-primary);
+}
+
+.science-box p { font-size: 16px; line-height: 2; color: var(--clr-text); margin: 0 0 20px; }
+
+.science-box img { width: 100%; max-height: 400px; object-fit: cover; border-radius: var(--radius-md); }
+
+
+/* ==================== 美食科普 - 扩展 ==================== */
+
+/* 数字统计 */
+.stat-row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 28px 12px;
+    background: var(--clr-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 24px;
+    transition: transform .3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-num {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--clr-primary);
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--clr-text-muted);
+    font-weight: 500;
+}
+
+/* 子标题 */
+.sub-heading {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--clr-text);
+    margin: 40px 0 24px;
+    padding-left: 16px;
+    border-left: 4px solid var(--clr-primary);
+}
+
+/* 烹饪技法卡片 */
+.knowledge-card {
+    background: var(--clr-surface);
+    border-radius: var(--radius-md);
+    padding: 24px 20px;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 24px;
+    transition: all .3s ease;
+    border-top: 3px solid transparent;
+}
+
+.knowledge-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-top-color: var(--clr-accent);
+}
+
+.knowledge-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.knowledge-card h5 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--clr-primary-dark);
+    margin: 0 0 8px;
+}
+
+.knowledge-card p {
+    font-size: 13px;
+    color: var(--clr-text-muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* 冷知识卡片 */
+.trivia-card {
+    background: var(--clr-surface);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 24px;
+    transition: all .3s ease;
+    border-left: 4px solid var(--clr-accent);
+}
+
+.trivia-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.trivia-q {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--clr-primary-dark);
+    margin-bottom: 10px;
+    padding-left: 24px;
+    position: relative;
+}
+
+.trivia-q::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    color: var(--clr-accent);
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.trivia-a {
+    font-size: 14px;
+    color: var(--clr-text-muted);
+    line-height: 1.8;
+    padding-left: 24px;
+    position: relative;
+}
+
+.trivia-a::before {
+    content: 'A';
+    position: absolute;
+    left: 0;
+    color: var(--clr-primary);
+    font-weight: 900;
+    font-size: 18px;
+}
+
+
+/* ==================== 页脚 ==================== */
+footer {
+    background: linear-gradient(135deg, #1a0505 0%, #2d0a0a 100%);
+    position: relative; padding-top: 40px; margin-top: 60px;
+}
+
+footer::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent), var(--clr-primary));
+}
+
+footer .footer-brand {
+    font-family: var(--font-display); font-weight: 700;
+    color: var(--clr-accent-light); font-size: 18px; margin-bottom: 8px;
+}
+
+footer p { font-size: 14px; color: rgba(255,255,255,.5); letter-spacing: .04em; margin: 0; }
+
+/* ==================== 回到顶部 ==================== */
+.back-to-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark));
+    color: #fff; border: none; border-radius: 50%; font-size: 20px;
+    cursor: pointer; opacity: 0; visibility: hidden;
+    transform: translateY(20px); transition: all .3s ease;
+    box-shadow: 0 4px 16px rgba(198,40,40,.3); z-index: 999;
+    text-align: center; line-height: 50px; padding: 0;
+}
+
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.back-to-top:hover {
+    background: linear-gradient(135deg, #D32F2F, var(--clr-primary));
+    transform: translateY(-3px); box-shadow: 0 8px 24px rgba(198,40,40,.4);
+    color: #fff; text-decoration: none;
+}
+
+/* ==================== 动画 ==================== */
+.reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

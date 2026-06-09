@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美味百科 - 美食介绍科普网站</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/csgo.css"/>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar navbar-fixed-top" id="mainNav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navMenu">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">美味百科</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#top">首页</a></li>
+                <li><a href="#caixi">八大菜系</a></li>
+                <li><a href="#xiaochi">特色小吃</a></li>
+                <li><a href="#abroad">异国美食</a></li>
+                <li><a href="#gameBox">休闲小游戏</a></li>
+                <li><a href="#know">美食科普</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Banner -->
+<section class="banner-section" id="top">
+    <div class="container">
+        <div id="foodBanner" class="carousel slide" data-ride="carousel" data-interval="4000">
+            <ol class="carousel-indicators">
+                <li data-target="#foodBanner" data-slide-to="0" class="active"></li>
+                <li data-target="#foodBanner" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="img/tp/k.jpeg" alt="中餐美食">
+                    <div class="carousel-caption"><h3>中华美食源远流长</h3><p>带你了解各地特色菜品文化</p></div>
+                </div>
+                <div class="item">
+                    <img src="img/tp/t.jpeg" alt="特色小吃">
+                    <div class="carousel-caption"><h3>街头风味小吃</h3><p>走遍中国寻觅人间烟火味</p></div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#foodBanner" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">上一张</span>
+            </a>
+            <a class="right carousel-control" href="#foodBanner" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">下一张</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 热门美食推荐 -->
+<section class="container" style="padding-top:60px;padding-bottom:60px;" id="hot">
+    <div class="section-header reveal">
+        <h2 class="section-title">热门美食推荐</h2>
+        <p class="section-subtitle">品味经典，感受舌尖上的中国</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-3"><div class="food-card"><img src="img/tp/mpdf.jpeg" class="food-card-img" alt="麻婆豆腐"><div class="food-card-body"><h5 class="food-card-title">麻婆豆腐</h5><p class="food-card-text">四川经典川菜，麻辣鲜香，历史悠久，家常菜代表。</p></div></div></div>
+        <div class="col-sm-6 col-md-3"><div class="food-card"><img src="img/tp/bjky.jpeg" class="food-card-img" alt="北京烤鸭"><div class="food-card-body"><h5 class="food-card-title">北京烤鸭</h5><p class="food-card-text">京城名菜，皮酥肉嫩，国宴代表美食。</p></div></div></div>
+        <div class="col-sm-6 col-md-3"><div class="food-card"><img src="img/tp/tcly.jpeg" class="food-card-img" alt="糖醋鲤鱼"><div class="food-card-body"><h5 class="food-card-title">糖醋鲤鱼</h5><p class="food-card-text">鲁菜经典，造型优美，酸甜适口。</p></div></div></div>
+        <div class="col-sm-6 col-md-3"><div class="food-card"><img src="img/tp/gscs.jpeg" class="food-card-img" alt="叉烧"><div class="food-card-body"><h5 class="food-card-title">广式叉烧</h5><p class="food-card-text">粤菜特色，蜜汁入味，粤式早茶标配。</p></div></div></div>
+    </div>
+</section>
+
+<!-- 八大菜系 -->
+<section id="caixi" style="padding-top:60px;padding-bottom:60px;">
+    <div class="container">
+        <div class="section-header reveal"><h2 class="section-title">中国八大菜系</h2><p class="section-subtitle">一方水土养一方人，八大菜系各有千秋</p></div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-sichuan"><img src="img/tp/cc.jpg" alt="川菜"><div class="cuisine-name">川菜</div><div class="cuisine-desc">麻辣厚重，一菜一格，百菜百味</div></div></div>
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-guangdong"><img src="img/tp/yc.jpg" alt="粤菜"><div class="cuisine-name">粤菜</div><div class="cuisine-desc">清鲜嫩滑，原汁原味，兼容并蓄</div></div></div>
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-shandong"><img src="img/tp/lc.jpg" alt="鲁菜"><div class="cuisine-name">鲁菜</div><div class="cuisine-desc">咸鲜醇厚，北方菜系代表</div></div></div>
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-jiangsu"><img src="img/tp/sc.jpg" alt="苏菜"><div class="cuisine-name">苏菜</div><div class="cuisine-desc">精致清淡，刀工精湛，注重本味</div></div></div>
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-zhejiang"><img src="img/tp/zc.jpg" alt="浙菜"><div class="cuisine-name">浙菜</div><div class="cuisine-desc">鲜嫩脆爽，江南风味，清雅细腻</div></div></div>
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-fujian"><img src="img/tp/mc.jpg" alt="闽菜"><div class="cuisine-name">闽菜</div><div class="cuisine-desc">酸甜鲜香，擅用红糟，汤菜见长</div></div></div>
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-hunan"><img src="img/tp/xc.jpg" alt="湘菜"><div class="cuisine-name">湘菜</div><div class="cuisine-desc">香辣浓郁，重油重色，下饭神器</div></div></div>
+            <div class="col-sm-6 col-md-3 reveal"><div class="cuisine-card cuisine-anhui"><img src="img/tp/wc.jpg" alt="徽菜"><div class="cuisine-name">徽菜</div><div class="cuisine-desc">重油重色，山珍为主，古朴醇厚</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 特色小吃（9个） ==================== -->
+<section id="xiaochi" class="snack-section" style="padding-top:60px;padding-bottom:60px;">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">全国各地特色小吃</h2>
+            <p class="section-subtitle">藏在街头巷尾的人间至味</p>
+        </div>
+        <div class="row">
+            <!-- 1 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/rjm.jpg" alt="西安肉夹馍"></div>
+                    <div class="snack-body"><h5>西安肉夹馍</h5><p>陕西经典小吃，白吉馍夹卤肉，外皮酥脆，肉香四溢，被誉为"中式汉堡"。</p></div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/cqxm.jpg" alt="重庆小面"></div>
+                    <div class="snack-body"><h5>重庆小面</h5><p>麻辣小面，山城市井美食代表，一碗面浓缩了重庆人的火辣性格。</p></div>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/sxcdf.jpg" alt="长沙臭豆腐"></div>
+                    <div class="snack-body"><h5>长沙臭豆腐</h5><p>闻起来臭，吃起来香。外焦里嫩，浇上辣椒酱汁，是湘式街边美食的灵魂。</p></div>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/whrgm.jpg" alt="武汉热干面"></div>
+                    <div class="snack-body"><h5>武汉热干面</h5><p>武汉人的早餐灵魂，碱面拌芝麻酱，香气浓郁，口感筋道，是江城的味觉名片。</p></div>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/tjbr.jpg" alt="天津狗不理包子"></div>
+                    <div class="snack-body"><h5>天津狗不理包子</h5><p>津门老字号，薄皮大馅十八个褶，鲜香多汁，百年传承的经典味道。</p></div>
+                </div>
+            </div>
+            <!-- 6 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/lznr.jpg" alt="兰州牛肉面"></div>
+                    <div class="snack-body"><h5>兰州牛肉面</h5><p>一清二白三红四绿五黄，拉面技艺精湛，汤鲜味美，是西北面食文化的代表。</p></div>
+                </div>
+            </div>
+            <!-- 7 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/glmf.jpg" alt="桂林米粉"></div>
+                    <div class="snack-body"><h5>桂林米粉</h5><p>桂林山水甲天下，米粉亦甲天下。细滑米粉配卤水，鲜香爽口，是广西的味觉符号。</p></div>
+                </div>
+            </div>
+            <!-- 8 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/gygqm.jpg" alt="贵州酸汤鱼"></div>
+                    <div class="snack-body"><h5>贵州酸汤鱼</h5><p>苗家特色酸汤以番茄发酵而成，酸辣开胃，鱼肉鲜嫩，是贵州美食的精髓。</p></div>
+                </div>
+            </div>
+            <!-- 9 -->
+            <div class="col-md-4 col-sm-6 reveal">
+                <div class="snack-card">
+                    <div class="snack-img-wrap"><img src="img/tp/njyx.jpg" alt="南京鸭血粉丝汤"></div>
+                    <div class="snack-body"><h5>南京鸭血粉丝汤</h5><p>金陵名小吃，鸭血嫩滑、粉丝弹韧，配上鸭肝鸭肠，一碗汤尽显南京鸭文化。</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 异国美食（33个，按地区分类） ==================== -->
+<section id="abroad" class="abroad-section" style="padding-top:60px;padding-bottom:60px;">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">异国美食科普</h2>
+            <p class="section-subtitle">跨越国界的味蕾之旅，探索世界各地的经典美味</p>
+        </div>
+
+        <!-- 地区标签 -->
+        <ul class="nav abroad-tabs" role="tablist">
+            <li class="active"><a data-toggle="tab" href="#tab-east">东亚</a></li>
+            <li><a data-toggle="tab" href="#tab-south">东南亚</a></li>
+            <li><a data-toggle="tab" href="#tab-mideast">南亚 · 中东</a></li>
+            <li><a data-toggle="tab" href="#tab-europe">欧洲</a></li>
+            <li><a data-toggle="tab" href="#tab-americas">美洲</a></li>
+            <li><a data-toggle="tab" href="#tab-other">大洋洲 · 非洲</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+                    <div class="tab-content">
+
+            <!-- ===== 东亚 9道 ===== -->
+            <div class="tab-pane fade in active" id="tab-east">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_sc.jpg" alt="日本寿司"></div>
+                            <div class="world-body"><h5>日本寿司</h5><div class="world-origin">日本</div><p>醋饭搭配新鲜鱼生，讲究食材鲜度与刀工，是日本料理的代表性美食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_lm.jpg" alt="日本拉面"></div>
+                            <div class="world-body"><h5>日本拉面</h5><div class="world-origin">日本</div><p>浓郁猪骨、酱油、味噌等多种汤底，配以弹牙面条，是日本国民美食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_tf.jpg" alt="日本天妇罗"></div>
+                            <div class="world-body"><h5>日本天妇罗</h5><div class="world-origin">日本</div><p>海鲜与时蔬裹薄面糊油炸，外酥内嫩，蘸天汁食用，体现日式炸物的极致追求。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_krbc.jpg" alt="韩国泡菜"></div>
+                            <div class="world-body"><h5>韩国泡菜</h5><div class="world-origin">韩国</div><p>大白菜经辣椒粉、蒜姜腌制发酵，酸辣爽脆，是韩国餐桌上不可或缺的灵魂配菜。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_kgr.jpg" alt="韩国烤肉"></div>
+                            <div class="world-body"><h5>韩国烤肉</h5><div class="world-origin">韩国</div><p>炭火烤制五花肉或牛里脊，搭配生菜蒜片包食，是韩国社交聚餐的首选。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_bdc.jpg" alt="韩国部队锅"></div>
+                            <div class="world-body"><h5>韩国部队锅</h5><div class="world-origin">韩国</div><p>午餐肉、泡面、年糕、泡菜一锅炖煮，源于战争年代的创意，如今风靡全球。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_rbsd.jpg" alt="日式便当"></div>
+                            <div class="world-body"><h5>日式便当</h5><div class="world-origin">日本</div><p>精致分格的食盒中搭配饭食、炸物、腌菜与玉子烧，是日本饮食美学的缩影。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_hgsr.jpg" alt="韩国参鸡汤"></div>
+                            <div class="world-body"><h5>韩国参鸡汤</h5><div class="world-origin">韩国</div><p>童子鸡腹中塞入糯米、人参、红枣慢炖，汤浓味鲜，是韩国夏日进补的经典佳品。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_rssk.jpg" alt="日式烧肉"></div>
+                            <div class="world-body"><h5>日式烧肉</h5><div class="world-origin">日本</div><p>精选和牛薄切后炭火快烤，蘸酱或撒盐食用，追求肉质本身的极致油脂香气。</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 东南亚 9道 ===== -->
+            <div class="tab-pane fade" id="tab-south">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_dyg.jpg" alt="泰国冬阴功汤"></div>
+                            <div class="world-body"><h5>泰国冬阴功汤</h5><div class="world-origin">泰国</div><p>酸辣鲜甜四味合一，香茅、南姜、柠檬叶交织出层次丰富的热带风味汤品。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_tgmfm.jpg" alt="泰国芒果糯米饭"></div>
+                            <div class="world-body"><h5>泰国芒果糯米饭</h5><div class="world-origin">泰国</div><p>新鲜芒果配椰浆糯米，甜而不腻，是泰式甜品的巅峰之作。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_vnph.jpg" alt="越南河粉"></div>
+                            <div class="world-body"><h5>越南河粉</h5><div class="world-origin">越南</div><p>清透牛骨汤底配细滑河粉，佐以九层塔、豆芽、青柠，清爽鲜美，越南第一美食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_vnsj.jpg" alt="越南春卷"></div>
+                            <div class="world-body"><h5>越南春卷</h5><div class="world-origin">越南</div><p>米纸包裹虾肉、米粉与生菜，蘸鱼露酱汁，清爽低脂，越南最具代表性的家常小食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_idn.jpg" alt="印尼炒饭"></div>
+                            <div class="world-body"><h5>印尼炒饭</h5><div class="world-origin">印度尼西亚</div><p>甜酱油炒制的米饭配虾片、煎蛋和沙爹，是印尼的国民美食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_sgcf.jpg" alt="新加坡海南鸡饭"></div>
+                            <div class="world-body"><h5>新加坡海南鸡饭</h5><div class="world-origin">新加坡</div><p>鸡肉嫩滑，米饭用鸡油鸡汤烹制，搭配辣椒酱和姜蓉，新加坡国菜。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_mlgc.jpg" alt="马来西亚肉骨茶"></div>
+                            <div class="world-body"><h5>马来西亚肉骨茶</h5><div class="world-origin">马来西亚</div><p>猪肋排配当归、党参等药材炖煮，汤浓肉烂，兼具食补功效的南洋经典。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_plbg.jpg" alt="菲律宾烤乳猪"></div>
+                            <div class="world-body"><h5>菲律宾烤乳猪</h5><div class="world-origin">菲律宾</div><p>整只乳猪填入香料后炭火慢烤至皮脆肉嫩，是菲律宾节庆宴席的压轴大菜。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_mnd.jpg" alt="缅甸茶叶沙拉"></div>
+                            <div class="world-body"><h5>缅甸茶叶沙拉</h5><div class="world-origin">缅甸</div><p>发酵茶叶配花生、豆角、番茄拌食，酸香微苦，缅甸独有的开胃小食。</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 南亚·中东 9道 ===== -->
+            <div class="tab-pane fade" id="tab-mideast">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_indcl.jpg" alt="印度咖喱"></div>
+                            <div class="world-body"><h5>印度咖喱</h5><div class="world-origin">印度</div><p>数十种香料调配而成的浓稠酱汁，配以鸡肉或羊肉，配馕饼食用，风味浓郁。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_idfb.jpg" alt="印度飞饼"></div>
+                            <div class="world-body"><h5>印度飞饼</h5><div class="world-origin">印度 / 马来西亚</div><p>面团甩制薄如蝉翼，煎至金黄酥脆，配咖喱蘸食，街头常见的人气小吃。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_indtd.jpg" alt="印度坦都里烤鸡"></div>
+                            <div class="world-body"><h5>印度坦都里烤鸡</h5><div class="world-origin">印度</div><p>鸡肉以酸奶和香料腌制后放入坦都炉高温烤制，外焦里嫩，色泽鲜红诱人。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_trkr.jpg" alt="土耳其烤肉"></div>
+                            <div class="world-body"><h5>土耳其烤肉</h5><div class="world-origin">土耳其</div><p>旋转烤架上层层叠叠的腌制肉串，切片后夹饼食用，中东街头最具辨识度的美食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_yrr.jpg" alt="伊朗烤肉串"></div>
+                            <div class="world-body"><h5>伊朗烤肉串</h5><div class="world-origin">伊朗</div><p>精选牛羊肉配洋葱腌制后炭火慢烤，肉质鲜嫩多汁，是波斯料理的精髓。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_hms.jpg" alt="鹰嘴豆泥"></div>
+                            <div class="world-body"><h5>鹰嘴豆泥</h5><div class="world-origin">黎巴嫩</div><p>鹰嘴豆与芝麻酱、柠檬汁搅拌成泥，淋上橄榄油，中东最经典的开胃小食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_swm.jpg" alt="沙瓦玛"></div>
+                            <div class="world-body"><h5>沙瓦玛</h5><div class="world-origin">中东地区</div><p>旋转烤肉切片卷入薄饼，配蔬菜与特制酱料，中东版"鸡肉卷"，风靡全球。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_tsq.jpg" alt="土耳其甜品"></div>
+                            <div class="world-body"><h5>土耳其巴克拉瓦</h5><div class="world-origin">土耳其</div><p>薄如蝉翼的千层酥皮夹碎坚果，淋上蜂蜜糖浆，中东地区最受欢迎的经典甜点。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_elmn.jpg" alt="斯里兰卡咖喱蟹"></div>
+                            <div class="world-body"><h5>斯里兰卡咖喱蟹</h5><div class="world-origin">斯里兰卡</div><p>新鲜花蟹配椰浆与斯里兰卡咖喱粉烹煮，香辣鲜甜，是印度洋岛国的招牌海鲜。</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 欧洲 9道 ===== -->
+            <div class="tab-pane fade" id="tab-europe">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_pz.jpg" alt="意大利披萨"></div>
+                            <div class="world-body"><h5>意大利披萨</h5><div class="world-origin">意大利</div><p>薄底番茄芝士披萨发源于那不勒斯，简约食材的完美组合，西餐文化标志性食物。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_ym.jpg" alt="意大利意面"></div>
+                            <div class="world-body"><h5>意大利意面</h5><div class="world-origin">意大利</div><p>形状种类多达数百种，配以番茄、奶油、橄榄油等不同酱汁，变化万千。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_fsg.jpg" alt="法式蜗牛"></div>
+                            <div class="world-body"><h5>法式蜗牛</h5><div class="world-origin">法国</div><p>蜗牛填入蒜香黄油焗烤，鲜嫩入味，是法国高级料理的经典前菜。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_xyf.jpg" alt="西班牙海鲜饭"></div>
+                            <div class="world-body"><h5>西班牙海鲜饭</h5><div class="world-origin">西班牙</div><p>藏红花染色的金黄米饭，配以虾、贝、鱿鱼等海鲜，是西班牙的国菜级美食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_dgc.jpg" alt="德国香肠"></div>
+                            <div class="world-body"><h5>德国香肠</h5><div class="world-origin">德国</div><p>品种超过1500种，从纽伦堡小香肠到巴伐利亚白肠，配酸菜和芥末，德国人的骄傲。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_ycys.jpg" alt="英国炸鱼薯条"></div>
+                            <div class="world-body"><h5>英国炸鱼薯条</h5><div class="world-origin">英国</div><p>裹面糊炸鳕鱼配粗薯条，撒盐浇醋，英国最经典的国民街头食物。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_xlsk.jpg" alt="希腊穆萨卡"></div>
+                            <div class="world-body"><h5>希腊穆萨卡</h5><div class="world-origin">希腊</div><p>茄子、肉酱、白酱层层叠放焗烤而成，地中海风味的代表性烘焙菜肴。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_pssdt.jpg" alt="葡式蛋挞"></div>
+                            <div class="world-body"><h5>葡式蛋挞</h5><div class="world-origin">葡萄牙</div><p>酥脆千层外皮包裹焦香嫩滑的蛋奶馅，经澳门传入中国后风靡全国，经典西式甜点。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_rszhr.jpg" alt="瑞士芝士火锅"></div>
+                            <div class="world-body"><h5>瑞士芝士火锅</h5><div class="world-origin">瑞士</div><p>格鲁耶尔与埃曼塔尔芝士融化后蘸面包块食用，是阿尔卑斯山区冬日里的温暖仪式。</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 美洲 9道 ===== -->
+            <div class="tab-pane fade" id="tab-americas">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_hbb.jpg" alt="美国汉堡"></div>
+                            <div class="world-body"><h5>美国汉堡</h5><div class="world-origin">美国</div><p>牛肉饼配生菜番茄芝士夹面包，美国快餐文化的象征，风靡全球的经典美味。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_mgln.jpg" alt="美式烧烤肋排"></div>
+                            <div class="world-body"><h5>美式烧烤肋排</h5><div class="world-origin">美国</div><p>猪肋排以低温烟熏数小时，刷上浓郁烧烤酱，骨肉分离，美国南方的灵魂料理。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_mgtp.jpg" alt="美国苹果派"></div>
+                            <div class="world-body"><h5>美国苹果派</h5><div class="world-origin">美国</div><p>酥皮包裹肉桂苹果馅烤至金黄，配香草冰淇淋食用，美国最具标志性的传统甜点。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_mxgk.jpg" alt="墨西哥塔可"></div>
+                            <div class="world-body"><h5>墨西哥塔可</h5><div class="world-origin">墨西哥</div><p>玉米薄饼卷入肉碎、洋葱、香菜、辣酱，搭配牛油果酱，拉丁美洲的灵魂食物。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_mxeg.jpg" alt="墨西哥恩奇拉达"></div>
+                            <div class="world-body"><h5>墨西哥恩奇拉达</h5><div class="world-origin">墨西哥</div><p>玉米饼卷入鸡肉或芝士后浇上辣椒酱与酸奶油焗烤，是墨西哥家庭餐桌上的经典。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_bxr.jpg" alt="巴西烤肉"></div>
+                            <div class="world-body"><h5>巴西烤肉</h5><div class="world-origin">巴西</div><p>长剑串肉旋转炭烤，服务生逐桌切片，肉食者的天堂，南美烧烤文化巅峰。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_lmxjy.jpg" alt="秘鲁酸橘汁腌鱼"></div>
+                            <div class="world-body"><h5>秘鲁酸橘汁腌鱼</h5><div class="world-origin">秘鲁</div><p>新鲜鱼肉以柠檬汁腌制，配洋葱辣椒，酸辣清爽，南美洲最负盛名的海鲜料理。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_agtnr.jpg" alt="阿根廷烤肉"></div>
+                            <div class="world-body"><h5>阿根廷烤肉</h5><div class="world-origin">阿根廷</div><p>潘帕斯草原放养牛肉以低温炭火慢烤数小时，肉质鲜嫩多汁，南美烧烤的巅峰之作。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_jndj.jpg" alt="加拿大普丁"></div>
+                            <div class="world-body"><h5>加拿大普丁</h5><div class="world-origin">加拿大</div><p>薯条浇上肉汁再铺满奶酪凝块，热融拉丝，加拿大魁北克省诞生的国民小吃。</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 大洋洲·非洲 9道 ===== -->
+            <div class="tab-pane fade" id="tab-other">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_azrp.jpg" alt="澳洲肉派"></div>
+                            <div class="world-body"><h5>澳洲肉派</h5><div class="world-origin">澳大利亚</div><p>酥皮包裹牛肉馅料烤制，搭配番茄酱食用，澳大利亚人最热爱的国民小吃。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_azbg.jpg" alt="澳洲袋鼠肉"></div>
+                            <div class="world-body"><h5>澳洲袋鼠肉</h5><div class="world-origin">澳大利亚</div><p>低脂高蛋白的袋鼠肉以煎烤方式烹制，口感类似牛肉，澳大利亚独有的特色野味。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_azss.jpg" alt="澳洲帕夫洛娃蛋糕"></div>
+                            <div class="world-body"><h5>澳洲帕夫洛娃蛋糕</h5><div class="world-origin">澳大利亚 / 新西兰</div><p>外脆内软的蛋白霜蛋糕铺满鲜奶油与时令水果，澳新两国引以为豪的经典甜品。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_xlyp.jpg" alt="新西兰烤羊排"></div>
+                            <div class="world-body"><h5>新西兰烤羊排</h5><div class="world-origin">新西兰</div><p>天然牧场放养的羊羔，简单调味后慢烤，肉质鲜嫩无膻味，新西兰代表性菜肴。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_mlgg.jpg" alt="摩洛哥塔吉锅"></div>
+                            <div class="world-body"><h5>摩洛哥塔吉锅</h5><div class="world-origin">摩洛哥</div><p>锥形陶盖锁住水汽慢炖，牛羊肉配杏干与香料，北非最具特色的焖煮料理。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_asyyl.jpg" alt="埃塞俄比亚英吉拉"></div>
+                            <div class="world-body"><h5>埃塞俄比亚英吉拉</h5><div class="world-origin">埃塞俄比亚</div><p>苔麸发酵制成的酸味薄饼，搭配各种炖菜手撕食用，东非独特的饮食文化体验。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_nfkr.jpg" alt="南非烤肉"></div>
+                            <div class="world-body"><h5>南非烤肉</h5><div class="world-origin">南非</div><p>南非传统Braai以木炭明火慢烤香肠、牛排和羊腿，是南非人社交聚会的灵魂仪式。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_jksl.jpg" alt="埃及库沙利"></div>
+                            <div class="world-body"><h5>埃及库沙利</h5><div class="world-origin">埃及</div><p>通心粉、扁豆、鹰嘴豆混合浇上番茄酱和炸洋葱，埃及街头最具人气的国民美食。</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="world-card">
+                            <div class="world-img-wrap"><img src="img/tp/yg_njly.jpg" alt="尼日利亚辣椒炖牛尾"></div>
+                            <div class="world-body"><h5>尼日利亚辣椒炖牛尾</h5><div class="world-origin">尼日利亚</div><p>牛尾配番茄辣椒酱长时间炖煮至酥烂，配木薯团食用，西非最具代表性的家常炖菜。</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.tab-content -->
+
+
+        </div><!-- /.tab-content -->
+    </div>
+</section>
+
+<!-- 休闲小游戏 -->
+<section class="game-section" id="gameBox">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">猜美食小游戏</h2>
+            <p class="section-subtitle">考验你的美食知识储备，看看你是几级吃货！</p>
+        </div>
+        <a href="ms.html" class="game-link reveal">
+            <div class="game-inner">
+                <div class="game-thumb-wrap"><img src="img/12.jpg" class="game-thumb" alt="猜美食游戏"></div>
+                <div class="game-info-wrap">
+                    <h3>美食猜猜猜</h3>
+                    <p>根据图片和线索猜出美食名称，挑战你的美食认知极限！</p>
+                    <span class="game-btn">点击开始游戏</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- 美食科普 -->
+<section id="know" class="science-section" style="padding-top:60px;padding-bottom:60px;">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2 class="section-title">美食小科普</h2>
+            <p class="section-subtitle">吃的是美食，品的是文化与科学</p>
+        </div>
+
+        <!-- 引言 -->
+        <div class="science-box reveal">
+            <p>
+                中华饮食文化历经数千年发展，博大精深。不同地域的气候、物产、历史传统造就了各具特色的饮食习惯。
+                从北方的面食文化到南方的米饭体系，从川渝的麻辣到江浙的清甜，食材选择与烹饪手法千差万别，
+                共同构成了一幅绚丽多彩的中华美食画卷。每一道菜背后，都蕴含着一方水土的人文故事。
+            </p>
+            <img src="img/tp/zgms.jpg" alt="中华美食文化">
+        </div>
+
+        <!-- 一组趣味数字 -->
+        <div class="row stat-row reveal">
+            <div class="col-xs-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">8</div>
+                    <div class="stat-label">中国八大菜系</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label">烹饪技法种类</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">4000</div>
+                    <div class="stat-label">年中华饮食史</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-num">200+</div>
+                    <div class="stat-label">全球国家与地区饮食文化</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 烹饪技法卡片 -->
+        <h3 class="sub-heading reveal">常见烹饪技法</h3>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 reveal">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🔥</div>
+                    <h5>爆炒</h5>
+                    <p>大火热油快速翻炒，锁住食材水分和营养，成菜口感脆嫩。川菜中的宫保鸡丁、粤菜中的爆炒虾仁均属此类，讲究"锅气"十足。</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 reveal">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🫕</div>
+                    <h5>炖煮</h5>
+                    <p>小火慢炖使食材充分入味，汤汁浓郁醇厚。广东老火靓汤、东北酸菜炖粉条都是炖煮的经典，时间是最好的调味料。</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 reveal">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">♨️</div>
+                    <h5>清蒸</h5>
+                    <p>以蒸汽加热保留食材原汁原味，最大程度保存营养。清蒸鲈鱼、蒸蛋羹是代表，粤菜尤为推崇此法，追求"鲜"字当头。</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 reveal">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🥘</div>
+                    <h5>红烧</h5>
+                    <p>先煎后炖，酱油与糖色赋予食材红亮色泽和浓郁酱香。红烧肉、红烧鱼是国民级家常菜，咸甜交融令人回味无穷。</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 reveal">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🫧</div>
+                    <h5>凉拌</h5>
+                    <p>新鲜食材切配后以调料拌制，无需加热，清爽开胃。凉拌黄瓜、夫妻肺片均为经典，是夏日餐桌上的消暑利器。</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 reveal">
+                <div class="knowledge-card">
+                    <div class="knowledge-icon">🫙</div>
+                    <h5>腌制发酵</h5>
+                    <p>利用盐、糖或微生物发酵保存食材并赋予独特风味。豆腐乳、酸菜、泡菜、火腿均源于此法，跨越千年的食品保鲜智慧。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 饮食冷知识 -->
+        <h3 class="sub-heading reveal">饮食冷知识</h3>
+        <div class="row">
+            <div class="col-sm-6 reveal">
+                <div class="trivia-card">
+                    <div class="trivia-q">筷子为什么是七寸六分长？</div>
+                    <div class="trivia-a">标准筷子长度为七寸六分（约 25 厘米），代表人的"七情六欲"，寓意人与动物的区别在于有情感和节制。一头圆一头方则象征"天圆地方"。</div>
+                </div>
+            </div>
+            <div class="col-sm-6 reveal">
+                <div class="trivia-card">
+                    <div class="trivia-q">"东坡肉"的名字从何而来？</div>
+                    <div class="trivia-a">北宋文学家苏东坡被贬黄州时，研究出小火慢炖猪肉的做法，写下"慢着火，少着水，火候足时它自美"的烹饪心得，后人以此命名纪念。</div>
+                </div>
+            </div>
+            <div class="col-sm-6 reveal">
+                <div class="trivia-card">
+                    <div class="trivia-q">世界上最贵的香料是什么？</div>
+                    <div class="trivia-a">藏红花（番红花），每克售价可达数十元至上百元。它需要手工采摘花朵的雌蕊，约 15 万朵花才能产出 1 公斤干藏红花，因此被誉为"红色黄金"。</div>
+                </div>
+            </div>
+            <div class="col-sm-6 reveal">
+                <div class="trivia-card">
+                    <div class="trivia-q">豆腐是谁发明的？</div>
+                    <div class="trivia-a">相传豆腐由西汉淮南王刘安炼丹时意外发明。他在八公山上用黄豆汁培育丹苗，偶然发现豆浆凝固成块，由此诞生了流传两千年的豆腐。</div>
+                </div>
+            </div>
+            <div class="col-sm-6 reveal">
+                <div class="trivia-card">
+                    <div class="trivia-q">辣椒其实传入中国很晚？</div>
+                    <div class="trivia-a">辣椒原产美洲，明末才传入中国，距今不过约 400 年。在此之前，中国菜肴的"辣"主要来自花椒、茱萸和姜。如今却已成为川湘菜的灵魂。</div>
+                </div>
+            </div>
+            <div class="col-sm-6 reveal">
+                <div class="trivia-card">
+                    <div class="trivia-q">方便面是哪个国家发明的？</div>
+                    <div class="trivia-a">1958 年由日籍台湾人安藤百福（原名吴百福）发明。他在自家小屋中经过无数次试验，首创了"瞬间油热干燥法"，让面条可以长期保存并快速泡发。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 页脚 -->
+<footer>
+    <div class="container text-center">
+        <div class="footer-brand">美味百科</div>
+        <p>&copy; IVT &middot; 二组网页 &middot; 刘佳喻 周华</p>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">&uarr;</button>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function ($) {
+    'use strict';
+
+    var $nav = $('#mainNav');
+    $(window).on('scroll', function () {
+        $nav.toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+
+    var $sections = $('section[id]');
+    var $navLinks = $('.navbar .nav > li > a');
+    function activateNav() {
+        var scrollY = $(window).scrollTop() + 100;
+        $sections.each(function () {
+            var top = $(this).offset().top;
+            var height = $(this).outerHeight();
+            var id = $(this).attr('id');
+            if (scrollY >= top && scrollY < top + height) {
+                $navLinks.parent().removeClass('active');
+                $navLinks.filter('[href="#' + id + '"]').parent().addClass('active');
+            }
+        });
+    }
+    $(window).on('scroll', activateNav);
+
+    $('a[href^="#"]').on('click', function (e) {
+        var target = $(this.getAttribute('href'));
+        if (target.length) {
+            e.preventDefault();
+            $('html, body').stop().animate({ scrollTop: target.offset().top - 60 }, 500);
+            $('#navMenu').collapse('hide');
+        }
+    });
+
+    var $reveals = $('.reveal');
+    function checkReveal() {
+        var windowBottom = $(window).scrollTop() + $(window).height();
+        $reveals.each(function () {
+            if ($(this).offset().top < windowBottom - 60) {
+                $(this).addClass('visible');
+            }
+        });
+    }
+    $(window).on('scroll', checkReveal);
+    checkReveal();
+
+    var $btnTop = $('#backToTop');
+    $(window).on('scroll', function () { $btnTop.toggleClass('visible', $(this).scrollTop() > 400); });
+    $btnTop.on('click', function () { $('html, body').stop().animate({ scrollTop: 0 }, 500); });
+
+})(jQuery);
+</script>
+</body>
+</html>
